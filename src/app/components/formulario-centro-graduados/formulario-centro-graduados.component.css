@@ -1,0 +1,99 @@
+.img-usco {
+    max-width: 310px; 
+    max-height: 200px;
+    padding-left: 20px;
+}
+
+.img-egresado{
+    max-width: 40px; 
+    max-height: 40px;
+    margin-left: auto;
+    border-radius: 50%;
+    padding-bottom: 10px;
+}
+
+.img-egresado-dos{
+    max-width: 65px; 
+    max-height: 65px;
+    margin-left: 60px;
+    border-radius: 50%;
+}
+
+.p-usco { 
+    font-family: 'Open Sans', Arial, Helvetica, sans-serif; 
+    font: 32px;
+    margin-left:auto; 
+    margin-right: 10px;
+    margin-top: 50px;
+    text-align: right;
+}
+
+.p-egresado{ 
+    font-family: 'Open Sans Condensed', Arial, Helvetica, sans-serif; 
+    font-size: 19px;
+    color: white;
+    font-weight: bolder;
+    margin-left:auto; 
+    margin-right: auto;
+    margin-top: 50px;
+}
+
+.p-egresados-dos{
+    font-family: 'Open Sans Condensed', Arial, Helvetica, sans-serif; 
+    font-size: 18px;
+    text-align: center;
+    font-weight: bolder;
+    margin-bottom: auto;
+}
+.p-egresados-tres{
+    font-family: 'Open Sans Condensed', Arial, Helvetica, sans-serif; 
+    font-size: 10px;
+    text-align: center;
+    font-weight: bolder;
+}
+
+.r-egresado, .dropdown-usco{
+    background-color: #0780b8;
+}
+
+.btn-egresado{
+    padding-top: 15px; /* Ajusta la distancia superior del texto */
+    padding-bottom: 10px;
+}
+
+.dropdown-usco{
+    border-color: black;
+    border-radius: 5%;
+}
+
+.custom-card-header {
+    font-size: 14px; /* Tamaño de fuente personalizado */
+    height: 40px; /* Altura personalizada */
+    padding-top: 5px; /* Margen superior personalizado */
+    padding-bottom: 5px; /* Margen inferior personalizado */
+}
+
+.my-custom-horizontal-margin {
+    /*  display: flex; */
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: stretch;
+    margin: 0 10px;
+    width: 300px;
+  }
+
+.custom-label{
+    width: 100px; /* define una anchura específica */
+    max-width: 200px; /* define una anchura máxima */
+}
+
+.container-fluid{
+    font-family: 'Open Sans Condensed', Arial, Helvetica, sans-serif;
+}
+
+.buttonUsco:hover{
+    background-color: #555555;
+    color: white;
+  }
+
+

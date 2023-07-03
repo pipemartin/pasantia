@@ -1,0 +1,29 @@
+<div class="container">
+    <form [formGroup]="idioma">
+        <label class="labelUsco">Agregar Idioma</label>
+        <div class="form-group">
+            <mat-form-field class="my-custom-horizontal-margin">
+                <input matInput placeholder="Idioma" formControlName="idiomas" required>
+            </mat-form-field>
+        </div>
+        <div class="form-group">
+            <mat-form-field class="my-custom-horizontal-margin">
+                <input matInput placeholder="Conversacion" formControlName="idiomas" required>
+            </mat-form-field>
+        </div>
+        <div class="form-group">
+            <mat-form-field class="my-custom-horizontal-margin">
+                <input matInput placeholder="Escritura" formControlName="idiomas" required>
+            </mat-form-field>
+        </div>
+        <div class="form-group">
+            <mat-form-field class="my-custom-horizontal-margin">
+                <input matInput placeholder="Lectura" formControlName="idiomas" required>
+            </mat-form-field>
+        </div>
+        <div>
+            <button (click)="onNoClick()">Cerrar</button>
+            <!--  <button mat-button matStepperNext>Guardar</button> -->
+        </div>
+    </form>
+</div>

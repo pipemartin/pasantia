@@ -1,0 +1,9 @@
+.form-group {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+}
+
+.container{
+    font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+}

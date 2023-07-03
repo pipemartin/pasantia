@@ -1,0 +1,28 @@
+img {
+    max-width: 310px; 
+    max-height: 310px;
+}
+
+p { 
+    font-family: 'Open Sans', Arial, Helvetica, sans-serif; 
+    font: 32px;
+}
+
+.card-usco {
+    box-shadow: 8px 5px 40px #A6B1B6;
+    -moz-box-shadow: 8px 5px 40px #A6B1B6;
+    -webkit-box-shadow:  8px 5px 40px #A6B1B6;
+}
+
+button {
+    color: white;
+    background-color: #8F141B;
+}
+
+.btn-usco {
+    width: 300px;
+    display: grid; 
+    place-items: center; 
+    margin-left:auto; 
+    margin-right:auto;
+}

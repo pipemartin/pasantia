@@ -1,0 +1,35 @@
+<div class="container">
+    <form [formGroup]="estudios">
+        <label class="labelUsco">Agregar Estudio</label>
+        <div class="form-group">
+            <mat-form-field class="my-custom-horizontal-margin">
+                <input matInput placeholder="Profesión" formControlName="profesion" required>
+            </mat-form-field>
+        </div>
+        <div class="form-group">
+            <mat-form-field class="my-custom-horizontal-margin">
+                <input matInput placeholder="Nivel" formControlName="profesion" required>
+            </mat-form-field>
+        </div>
+        <div class="form-group">
+            <mat-form-field class="">
+                <input matInput type="date" placeholder="Fecha (MM/DD/A)" formControlName="profesion" required>
+            </mat-form-field>
+        </div>
+        <div class="form-group">
+            <mat-form-field class="my-custom-horizontal-margin">
+                <input matInput placeholder="Entidad" formControlName="profesion" required>
+            </mat-form-field>
+        </div>
+        <div class="form-group">
+            <mat-form-field class="my-custom-horizontal-margin">
+                <input matInput placeholder="Titulo Obtenido" formControlName="profesion" required>
+            </mat-form-field>
+        </div>
+        <div>
+            <button (click)="onNoClick()" >Cerrar</button>
+            <!-- <button mat-button matStepperNext (click)="onNoClick()">Guardar</button>  -->
+        </div>
+    </form>
+    
+</div>

@@ -1,0 +1,164 @@
+<div class="container-fluid">
+    <div class="row border-bottom r-egresado">
+        <div class=" pull-left">
+            <p class="m-4 p-egresado">DIRECCION CENTRO DE GRADUADOS</p>
+        </div>
+    </div>
+    <div class="row align-items-center justify-content-center d-flex align-items-stretch">
+        <div class="col-12 mb-3">
+            <div class="card  mt-2">
+                <div class="card-header custom-card-header d-flex align-items-center justify-content-between">
+                  <h5 class="card-title pt-3">Información inicial</h5>
+                  <button class="btn btn-link btn-minimize float-right" data-toggle="collapse" data-target="#cardCollapse" aria-expanded="true" aria-controls="cardCollapse">
+                    <i class="fas fa-minus"></i>
+                  </button>
+                </div>
+                <div class="card-body collapse show" id="cardCollapse">
+                  <p class="card-text">Reciba  un cordial  saludo de  parte de la  oficina DIRECCION CENTRO DE GRADUADOS  de la Universidad Surcolombiana.<br>  
+
+                    Agradecemos diligenciar la información  que  se solicita a  continuación, con el objetivo de poder realizar el proceso de carnetización.<br>
+                    Por favor tener presente:<br></p>
+                    <ol>
+                        <li>Nombres y apellidos en mayúscula y con las tildes que se requieran.</li>
+                        <li>Se solicita que diligencien el número de la cédula sin puntos.</li>
+                        <li>El e-mail debe ir todo en minúscula.</li>
+                        <li>Copia escaneada de la cédula del estudiante próximo a graduar en formato PDF</li>
+                        <li>Foto tamaño cédula con fondo azul.</li>
+                        <li>El nombre de los archivos deber ser así: Cédula o foto_(nombre estudiante)_(programa)</li>
+                            <ul>
+                                <li>Cédula_Juan_Perez_Psicologia</li>
+                                <li>Foto_Juan_Perez_Psicologia</li>
+                            </ul>
+                    </ol>
+                    <p>La  información recolectada solamente será utilizada  para fines académicos, manteniendo la confidencialidad de los datos suministrados.</p>
+                </div>
+            </div>
+            <div>
+                <mat-vertical-stepper [linear]="isLinear" #stepper>
+                    <mat-step [stepControl]="firstFormGroup">
+                        <form [formGroup]="firstFormGroup">
+                            <ng-template matStepLabel>Datos Personales</ng-template>
+                            <mat-form-field class="my-custom-horizontal-margin">
+                                <input matInput type="date" placeholder="Fecha De Grado" formControlName="firstCtrl" required>
+                            </mat-form-field>
+                            <mat-form-field class="my-custom-horizontal-margin">
+                                <input matInput placeholder="Nombre(s)" formControlName="nombre">
+                                <mat-error *ngIf="this.firstFormGroup.controls['nombre'].invalid && this.firstFormGroup.controls['nombre'].touched">Por favor, ingresa solo letras mayúsculas.</mat-error>
+                            </mat-form-field>
+                            <mat-form-field class="my-custom-horizontal-margin">
+                                <input matInput placeholder="Apellido(s)"  formControlName="apellido">
+                                <mat-error *ngIf="this.firstFormGroup.controls['apellido'].invalid && this.firstFormGroup.controls['apellido'].touched">Por favor, ingresa solo letras mayúsculas.</mat-error>
+                            </mat-form-field>
+                            <mat-form-field class="my-custom-horizontal-margin">
+                                <input matInput placeholder="Cedula de Ciudadania"  formControlName="cedula">
+                                <mat-error *ngIf="this.firstFormGroup.controls['cedula'].invalid && this.firstFormGroup.controls['cedula'].touched">Por favor, ingresa solo números.</mat-error>
+                            </mat-form-field>
+                            <mat-form-field class="my-custom-horizontal-margin">
+                                <input type="text" placeholder="RH - Grupo Sanguineo" aria-label="RH - Grupo Sanguineo"  matInput formControlName="firstAutocomplete" [matAutocomplete]="auto">
+                                <mat-autocomplete #auto="matAutocomplete" panelMaxHeight="5px" [displayWith]="displayFn">
+                                    <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                                    {{option.name}}
+                                    </mat-option>
+                                </mat-autocomplete>
+                                <mat-error *ngIf="this.firstFormGroup.controls['firstAutocomplete'].invalid && this.firstFormGroup.controls['firstAutocomplete'].touched">
+                                    Por favor, selecciona un valor válido.
+                                </mat-error>
+                            </mat-form-field>
+                            <mat-form-field class="my-custom-horizontal-margin">
+                                <input matInput placeholder="Celular" class="usco-input-padding"  formControlName="celular">
+                                <mat-error *ngIf="this.firstFormGroup.controls['celular'].invalid && this.firstFormGroup.controls['celular'].touched">Por favor, ingresa solo números.</mat-error>
+                            </mat-form-field>
+                            <mat-form-field class="my-custom-horizontal-margin">
+                                <input matInput placeholder="Correo Electronico"  formControlName="email" required>
+                                <mat-error *ngIf="this.firstFormGroup.controls['email'].invalid">{{getErrorMessage()}}</mat-error>
+                            </mat-form-field>
+                            <div>
+                                <button mat-button matStepperNext>Next</button>
+                            </div>
+                        </form>
+                    </mat-step>
+                    <mat-step [stepControl]="secondFormGroup">
+                        <form [formGroup]="secondFormGroup">
+                            <ng-template matStepLabel>Datos Académicos</ng-template>
+                            <mat-form-field class="my-custom-horizontal-margin">
+                                <input matInput placeholder="Código del estudiante"  formControlName="codigo">
+                                <mat-error *ngIf="this.secondFormGroup.controls['codigo'].invalid && this.secondFormGroup.controls['codigo'].touched">Por favor, ingresa solo números.</mat-error>
+                            </mat-form-field>
+                            <mat-form-field class="my-custom-horizontal-margin">
+                                <input matInput type="text" placeholder="Programa" aria-label="Programa" formControlName="secondAutocomplete" [matAutocomplete]="autoSecond">
+                                <mat-autocomplete #autoSecond="matAutocomplete" panelMaxHeight="5px" [displayWith]="displaySecond">
+                                    <mat-option *ngFor="let option of filteredOptionsSecond | async" [value]="option">
+                                    {{option.names}}
+                                    </mat-option>
+                                </mat-autocomplete>
+                                <mat-error *ngIf="this.secondFormGroup.controls['secondAutocomplete'].invalid && this.secondFormGroup.controls['secondAutocomplete'].touched">
+                                        Por favor, selecciona un valor válido.
+                                </mat-error>
+                            </mat-form-field>
+                            <mat-form-field class="my-custom-horizontal-margin">
+                                <input matInput type="text" placeholder="Programa" aria-label="Programa" formControlName="threeAutocomplete" [matAutocomplete]="autoThree">
+                                <mat-autocomplete #autoThree="matAutocomplete" panelMaxHeight="5px" [displayWith]="displayThree">
+                                    <mat-option *ngFor="let option of filteredOptionsThree | async" [value]="option">
+                                    {{option.names}}
+                                    </mat-option>
+                                </mat-autocomplete>
+                                <mat-error *ngIf="this.secondFormGroup.controls['threeAutocomplete'].invalid && this.secondFormGroup.controls['threeAutocomplete'].touched">
+                                        Por favor, selecciona un valor válido.
+                                </mat-error>
+                            </mat-form-field>
+                            <div>
+                                <button mat-button matStepperPrevious>Back</button>
+                                <button mat-button matStepperNext>Next</button>
+                            </div>
+                        </form>
+                    </mat-step>
+                    <mat-step>
+                        <ng-template matStepLabel>Documentos Solicitados</ng-template>
+                        <mat-label>Por favor adjuntar: </mat-label>
+                        <ol>
+                            <li>Copia escaneada de la cédula del estudiante próximo a graduar en formato PDF</li>
+                            <li>Foto tamaño cédula con fondo azul.</li>
+                            <li>El nombre de los archivos deber ser así: Cédula o foto_(nombre estudiante)_(programa)</li>
+                                <ul>
+                                    <li>Cédula_Juan_Perez_Psicologia</li>
+                                    <li>Foto_Juan_Perez_Psicologia</li>
+                                </ul>
+                        </ol>
+                        <form [formGroup]="threeFormGroup">
+                            <div>
+                                <mat-form-field style="width: 50%;">
+                                    <mat-label>Copia de la cédula</mat-label>
+                                    <button mat-icon-button matPrefix (click)="f_input.click()">
+                                    <mat-icon>attach_file</mat-icon>
+                                    </button>
+                                    <input type="text" readonly matInput formControlName="display" />
+                                    <input type="file" multip hidden #f_input (change)="handleFileInputChange(f_input.files)" />
+                                    <mat-error>this field is required</mat-error>
+                                </mat-form-field>
+                            </div>
+                            <div>
+                                <mat-form-field style="width: 50%;">
+                                    <mat-label>Foto del estudiante</mat-label>
+                                    <button mat-icon-button matPrefix (click)="f_inputSecond.click()">
+                                    <mat-icon>attach_file</mat-icon>
+                                    </button>
+                                    <input type="text" readonly matInput formControlName="displaySecond" />
+                                    <input type="file" multip hidden #f_inputSecond (change)="handleFileInputChangeSecond(f_inputSecond.files)" />
+                                    <mat-error>this field is required</mat-error>
+                                </mat-form-field>
+                            </div>
+                            <div>
+                                <br/>
+                                <mat-label>No olvide dar clic en el botón Enviar que aparece a continuación para registrar sus respuestas.</mat-label>
+                            </div>
+                            <div>
+                                <button mat-button matStepperPrevious>Back</button>
+                                <button mat-button matStepperNext>Enviar</button>
+                            </div>
+                        </form>
+                    </mat-step>
+                </mat-vertical-stepper>
+            </div>
+        </div>
+    </div>
+</div>

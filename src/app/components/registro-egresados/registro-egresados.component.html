@@ -1,0 +1,207 @@
+<div class="container-fluid">
+    <div class="row align-items-start justify-content-center border-bottom r-egresado">
+        <div class="col-md-8">
+            <p class="m-4 p-egresado">Registro Egresados</p>
+        </div>
+        <div class="col-6 col-md-4">
+            <div class="btn d-flex">
+                <img src="../../../assets/user.jpg" class="img-fluid mt-3 img-egresado" alt="usuario">
+                <button type="button" class="btn dropdown-toggle btn-egresado text-white" data-toggle="dropdown" data-display="static" aria-expanded="false">
+                    Juan Felipe Martin Diaz
+                </button>
+                <div class="dropdown-menu dropdown-menu-right w-100 dropdown-usco">
+                    <div class="text-center mr-5 mb-2">
+                        <img src="../../../assets/user.jpg" class="img-fluid mt-3 img-egresado-dos" alt="usuario">
+                    </div>
+                    <p class="p-egresados-dos text-white">Juan Felipe Martin Diaz</p>
+                    <p class="p-egresados-tres text-white">NEIVA - INGENIERIA DE SOFTWARE</p>
+                    <button class="dropdown-item" type="button" style="text-align: right;">Cerrar Sesion</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row align-items-center justify-content-center d-flex align-items-stretch">
+        <div class="col-12 mb-3">
+            <div class="card  mt-2">
+                <div class="card-header custom-card-header d-flex align-items-center justify-content-between">
+                  <h5 class="card-title pt-3">Información inicial</h5>
+                  <button class="btn btn-link btn-minimize float-right" data-toggle="collapse" data-target="#cardCollapse" aria-expanded="true" aria-controls="cardCollapse">
+                    <i class="fas fa-minus"></i>
+                  </button>
+                </div>
+                <div class="card-body collapse show" id="cardCollapse">
+                  <p class="card-text">Apreciado estudiante, el siguiente formulario tiene como fin actualizar sus datos de contacto para que la Universidad a traves de la oficina de Egresados pueda compartir con usted información de interes a su formacion posgradual y laboral. <br> <br> La informacion consignada solamente sera utilizada para fines academicos, manteniendo la confidencialidad de los datos suministrados.</p>
+                  <button class="btn btn-primary" id="minimize-btn">He leido y acepto las condiciones</button>
+                </div>
+            </div>
+            <div>
+                <mat-vertical-stepper [linear]="isLinear" #stepper>
+                <mat-step [stepControl]="firstFormGroup">
+                    <form [formGroup]="firstFormGroup">
+                        <ng-template matStepLabel>Datos Personales</ng-template>
+                        <mat-form-field class="my-custom-horizontal-margin">
+                            <input matInput placeholder="Primer Apellido" formControlName="firstCtrl" required>
+                        </mat-form-field>
+                        <mat-form-field class="my-custom-horizontal-margin"> <!-- class="mat-form-field-infix"  abajo  -->
+                            <input matInput placeholder="Segundo Apellido" formControlName="firstCtrl" required>
+                        </mat-form-field>
+                        <mat-form-field class="my-custom-horizontal-margin">
+                            <input matInput placeholder="Nombre(s)" formControlName="firstCtrl" required>
+                        </mat-form-field>
+                        <mat-form-field class="my-custom-horizontal-margin">
+                            <input matInput placeholder="Cedula de Ciudadania" formControlName="cedula" required>
+                        </mat-form-field>
+                        <mat-form-field class="my-custom-horizontal-margin">
+                            <input matInput type="date" placeholder="Fecha De Nacimiento" formControlName="firstCtrl" required>
+                        </mat-form-field>
+                        <mat-form-field class="my-custom-horizontal-margin " >
+                            <input matInput placeholder="Lugar de Nacimiento" formControlName="firstCtrl" required>
+                        </mat-form-field>
+                        <mat-form-field class="my-custom-horizontal-margin">
+                            <input type="text" placeholder="Pais de Residencia" aria-label="Pais de Residencia"  matInput formControlName="firstAutocomplete" [matAutocomplete]="auto">
+                            <mat-autocomplete #auto="matAutocomplete" panelMaxHeight="5px" [displayWith]="displayFn">
+                                <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                                {{option.name}}
+                                </mat-option>
+                            </mat-autocomplete>
+                        </mat-form-field>
+                        <mat-form-field class="my-custom-horizontal-margin">
+                            <input type="text" placeholder="Departamento de Residencia" aria-label="Departamento de Residencia" matInput formControlName="firstAutocomplete" [matAutocomplete]="auto">
+                            <mat-autocomplete #auto="matAutocomplete" panelMaxHeight="5px" [displayWith]="displayFn">
+                                <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                                {{option.name}}
+                                </mat-option>
+                            </mat-autocomplete>
+                        </mat-form-field>
+                        <mat-form-field class="my-custom-horizontal-margin">
+                            <input type="text" placeholder="Ciudad de Residencia" aria-label="Ciudad de Residencia"  matInput formControlName="firstAutocomplete" [matAutocomplete]="auto">
+                            <mat-autocomplete #auto="matAutocomplete" panelMaxHeight="5px" [displayWith]="displayFn">
+                                <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                                {{option.name}}
+                                </mat-option>
+                            </mat-autocomplete>
+                        </mat-form-field>
+                        <mat-form-field class="my-custom-horizontal-margin">
+                            <input matInput placeholder="Direccion de Residencia" class="usco-input-padding"  formControlName="firstCtrl" required>
+                        </mat-form-field>
+                        <mat-form-field class="my-custom-horizontal-margin">
+                            <input matInput placeholder="Correo Electronico"  formControlName="email" required>
+                            <mat-error *ngIf="this.firstFormGroup.controls['email'].invalid">{{getErrorMessage()}}</mat-error>
+                        </mat-form-field>
+                        <mat-form-field class="my-custom-horizontal-margin">
+                            <input type="text" placeholder="Estado Civil" aria-label="Estado Civil"  matInput formControlName="firstAutocomplete" [matAutocomplete]="auto">
+                            <mat-autocomplete #auto="matAutocomplete" panelMaxHeight="5px" [displayWith]="displayFn">
+                                <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                                {{option.name}}
+                                </mat-option>
+                            </mat-autocomplete>
+                        </mat-form-field>
+                        <mat-form-field class="my-custom-horizontal-margin">
+                            <input matInput type="number" placeholder="Telefono (Fijo)"  formControlName="fijo" required>
+                        </mat-form-field>
+                        <mat-form-field class="my-custom-horizontal-margin">
+                            <input matInput type="number" placeholder="Telefono (Movil)"  formControlName="celular" required>
+                        </mat-form-field>
+                        <div>
+                            <button mat-button matStepperNext>Next</button>
+                        </div>
+                    </form>
+                </mat-step>
+                <mat-step [stepControl]="secondFormGroup">
+                    <form [formGroup]="secondFormGroup">
+                        <ng-template matStepLabel>Informacion Academica</ng-template>
+                        <mat-form-field class="my-custom-horizontal-margin" style="width: 70%;">
+                            <input matInput placeholder="Profesión" formControlName="secondCtrl" required>
+                        </mat-form-field>
+                        <div>
+                            <mat-form-field class="my-custom-horizontal-margin" style="width: 95%;">
+                                <input matInput type="date" placeholder="Fecha De Grado (MM/DD/A) (Campo Reservado para Registro y control Academico)" formControlName="secondCtrl" required>
+                            </mat-form-field>
+                        </div>
+                        <div>
+                            <mat-form-field class="my-custom-horizontal-margin" style="width: 95%;">
+                                <input matInput placeholder="Titulo Trabajo de Grado" formControlName="secondCtrl" required>
+                            </mat-form-field>
+                        </div>
+                        <div>
+                            <mat-label>Otros Estudios Realizados: </mat-label>
+                            <button class="buttonUsco" mat-raised-button (click)="openDialog()"> <mat-icon>add</mat-icon>Agregar</button>
+                        </div>
+                        <table class="table table-bordered table-dark">
+                            <tr>
+                                <th scope="col">Nombre del Estudio</th>
+                                <th scope="col">Nivel</th>
+                                <th scope="col">Fecha</th>
+                                <th scope="col">Entidad</th>
+                                <th scope="col">Titulo Obtenido</th>
+                                <th scope="col"> Acciones</th>
+                            </tr>
+                        </table>
+                        <div>
+                            <mat-label>Idiomas que domina: </mat-label>
+                            <button class="buttonUsco" mat-raised-button (click)="openDialogDos()"> <mat-icon>add</mat-icon> Agregar</button>
+                        </div>
+                        <table class="table table-bordered table-dark">
+                            <tr>
+                                <th scope="col">Idioma</th>
+                                <th scope="col">Conversacion</th>
+                                <th scope="col">Escritura</th>
+                                <th scope="col">Lectura</th>
+                                <th scope="col"> Acciones</th>
+                            </tr>
+                        </table>
+                        <div>
+                            <mat-label>Programas de informatica que domina: </mat-label>
+                            <button class="buttonUsco" mat-raised-button (click)="openDialogTres()"> <mat-icon>add</mat-icon> Agregar</button>
+                        </div>
+                        <table class="table table-bordered table-dark">
+                            <tr>
+                                <th scope="col">Programa</th>
+                                <th scope="col">Manejo</th>
+                                <th scope="col"> Acciones</th>
+                            </tr>
+                        </table>
+                        <div>
+                            <button mat-button matStepperPrevious>Back</button>
+                            <button mat-button matStepperNext>Next</button>
+                        </div>
+                    </form>
+                </mat-step>
+                <mat-step>
+                    <div className="p-2">
+                        <ng-template matStepLabel>Experiencia Laboral y/o Profesional</ng-template>
+                        <div>
+                            <mat-label>Programas de informatica que domina: </mat-label>
+                            <button class="buttonUsco" mat-raised-button (click)="openDialogCuatro()"> <mat-icon>add</mat-icon> Agregar</button>
+                        </div>
+                    </div>
+                    <table class="table table-bordered table-dark">
+                        <tr>
+                            <th scope="col">Cargo</th>
+                            <th scope="col">Funcion</th>
+                            <th scope="col">Empresa</th>
+                            <th scope="col">Fecha Inicio(MM/DD/AA)</th>
+                            <th scope="col">Fecha Fin(MM/DD/AA)</th>
+                            <th scope="col"> Acciones</th>
+                        </tr>
+                    </table>
+                    <div>
+                        <button mat-button matStepperPrevious>Back</button>
+                        <button mat-button matStepperNext>Next</button>
+                    </div>
+                </mat-step>
+                <mat-step>
+                    <ng-template matStepLabel>Perfil Profesional</ng-template>
+                    <mat-form-field style="width: 100%;">
+                        <textarea matInput placeholder=" "></textarea>
+                    </mat-form-field>
+                    <div>
+                        <button mat-button matStepperPrevious>Back</button>
+                        <button mat-button matStepperNext>Next</button>
+                    </div>
+                </mat-step>
+                </mat-vertical-stepper>
+            </div>
+        </div>
+    </div>
+</div>

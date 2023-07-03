@@ -1,0 +1,34 @@
+<div class="form-group">
+    <form [formGroup]="empleo">
+        <label class="labelUsco">Agregar Experiencia Laboral</label>
+        <div class="form-group">
+            <mat-form-field class="my-custom-horizontal-margin">
+                <input matInput placeholder="Cargo" formControlName="empleos" required>
+            </mat-form-field>
+        </div>
+        <div class="form-group">
+            <mat-form-field class="my-custom-horizontal-margin">
+                <input matInput placeholder="Funcion" formControlName="empleos" required>
+            </mat-form-field>
+        </div>
+        <div class="form-group">
+            <mat-form-field class="my-custom-horizontal-margin">
+                <input matInput placeholder="Empresa" formControlName="empleos" required>
+            </mat-form-field>
+        </div>
+        <div class="form-group">
+            <mat-form-field class="">
+                <input matInput type="date" placeholder="Fecha Inicio (MM/DD/AA)" formControlName="empleos" required>
+            </mat-form-field>
+        </div>
+        <div class="form-group">
+            <mat-form-field class="">
+                <input matInput type="date" placeholder="Fecha Fin (MM/DD/AA)" formControlName="empleos" required>
+            </mat-form-field>
+        </div>
+        <div>
+            <button (click)="onNoClick()">Cerrar</button>
+            <!-- <button mat-button matStepperNext>Guardar</button> -->
+        </div>
+    </form>
+</div>
